@@ -28,15 +28,15 @@ class Blockchain:
 
     def init__(self):
         self.unconfirmed_transactions = []
-        self.chain = [
+        self.chain = []
 
-    def create_genesis_block(sel):
+    def create_genesis_block(self):
         """
         A function to generate genesis block and appends it to
         the chain. The block has index 0, previous_hash as 0, and
         a valid hash.
         """
-        genesis_block = Block(0, [], 0, "0")
+        genesis_block = Block(0, 0, 0, 0)
         genesis_block.hash = genesis_block.compute_hash()
         self chain.append(genesis_block)
 
@@ -73,7 +73,7 @@ class Blockchain:
         block.nonce = 0
 
         computed_hash = block.compute_hash()
-        while not computed_hash.startswith('0' * Blockchain.difficulty):
+        while not computed_hash.startswith('0'* Blockchain.difficulty):
             block.nonce += 1
             computed_hash = block.compute_hash()
 
@@ -92,9 +92,9 @@ class Blockchain:
                 block_hash == block.compute_hash())
 
     @classmethod
-    def check_chain_validity(, chain):
+    def check_chain_validity(chain):
         result = True
-        previous_hash = "0"
+        previous_hash = '0'
 
         for block  chain:
             block_hash == block.hash
@@ -113,9 +113,9 @@ class Blockchain:
 
     def mine(self):
         
-        "This function serves as an interface to add the pending
+        '''This function serves as an interface to add the pending
         transactions to the blockchain by adding them to the block
-        and figuring out Proof Of Work."
+        and figuring out Proof Of Work'''
         
         if not self.unconfirmed_transactions:
             return False
@@ -198,7 +198,7 @@ def mine_unconfirmed_transactions():
 app.route('/register_node', methods=['POST'])
 def register_new_peers():
     node_address = request.get_json()["node_address"]
-    if not node_address
+    if not node_address:
         return "Invalid data", 400
 
     # Add the node to the peer list
