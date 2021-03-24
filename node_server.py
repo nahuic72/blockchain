@@ -276,7 +276,7 @@ def verify_and_add_block():
     if not added:
         return The block was discarded by the node", 400
 
-    rturn "Block added to the chain", 201
+    return "Block added to the chain", 201
 
 
 # endpoint to query unconfirmed transactions
@@ -285,7 +285,7 @@ def get_pending_tx():
     retur json.dumps(blockchain.unconfirmed_transactions)
 
 
-def consensus()
+def consensus():
     """
     Our naive consnsus algorithm. If a longer valid chain is
     found, our chain is replaced with it.
@@ -295,7 +295,7 @@ def consensus()
     longest_chain = None
     current_len = len(blockchain.chain
 
-    fo node in peers:
+    for node in peers:
         response = requests.get('{}chain'.format(node))
         length = response.json()['length']
         chain = response.json()['chain']
@@ -303,7 +303,7 @@ def consensus()
             current_len = length
             longest_chain = chain
 
-    if longest_chain
+    if longest_chain:
         blockchain = longest_chain
         return True
 
@@ -316,12 +316,10 @@ def announce_new_block(block):
     Other blocks can simply verify the proof of work and add it to their
     respective chains.
     """
-    for peer in peers
+    for peer in peers:
         url = "{}add_block".format(peer)
         headers = {'Content-Type': "application/json"}
-        requests.post(url,
-                      data=json.dumps(block.__dict__, sort_keys=True),
-                      headers=headers)
+        requests.post(url,data=json.dumps(block.__dict__, sort_keys=True, headers=headers)
 
-Uncomment this line if you want to specify the port number in the code
+#Uncomment this line if you want to specify the port number in the code
 #app.run(debug=True, port=8000)
