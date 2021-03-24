@@ -38,7 +38,7 @@ class Blockchain:
         """
         genesis_block = Block(0, 0, 0, 0)
         genesis_block.hash = genesis_block.compute_hash()
-        self chain.append(genesis_block)
+        self.chain.append(genesis_block)
 
     @property
     def last_block(self):
@@ -225,7 +225,7 @@ def register_with_existing_node():
 
     # Make a request to register with remote node and obtain information
     response = requests.post(node_address + "/register_node,
-                             data=json.dumps(data), headers=headers)
+    data=json.dumps(data), headers=headers
 
     if response.status_code == 200:
         global blockchain
@@ -274,7 +274,7 @@ def verify_and_add_block():
     added = blockchain.add_block(block, proof)
 
     if not added:
-        return The block was discarded by the node", 400
+        return "The block was discarded by the node", 400
 
     rturn "Block added to the chain", 201
 
@@ -282,7 +282,7 @@ def verify_and_add_block():
 # endpoint to query unconfirmed transactions
 @approute('/pending_tx)
 def get_pending_tx():
-    retur json.dumps(blockchain.unconfirmed_transactions)
+    return json.dumps(blockchain.unconfirmed_transactions)
 
 
 def consensus()
@@ -293,9 +293,9 @@ def consensus()
     global blockchain
 
     longest_chain = None
-    current_len = len(blockchain.chain
+    current_len = len(blockchain.chain)
 
-    fo node in peers:
+    for node in peers:
         response = requests.get('{}chain'.format(node))
         length = response.json()['length']
         chain = response.json()['chain']
@@ -303,7 +303,7 @@ def consensus()
             current_len = length
             longest_chain = chain
 
-    if longest_chain
+    if longest_chain:
         blockchain = longest_chain
         return True
 
@@ -323,5 +323,5 @@ def announce_new_block(block):
                       data=json.dumps(block.__dict__, sort_keys=True),
                       headers=headers)
 
-Uncomment this line if you want to specify the port number in the code
-#app.run(debug=True, port=8000)
+#Uncomment this line if you want to specify the port number in the code
+app.run(debug=True, port=8000)
