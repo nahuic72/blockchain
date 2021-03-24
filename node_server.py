@@ -30,7 +30,7 @@ class Blockchain:
         self.unconfirmed_transactions = []
         self.chain = [
 
-    def create_genesis_block(sel):
+    def create_genesis_block(self):
         """
         A function to generate genesis block and appends it to
         the chain. The block has index 0, previous_hash as 0, and
