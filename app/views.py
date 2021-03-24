@@ -10,10 +10,10 @@ from app import app
 # such nodes as well.
 CONNECTED_NODE_ADDRESS = "http://127.0.0.1:8000"
 
-posts = [
+posts = []
 
 
-def fetch_posts()
+def fetch_posts():
     """
     Function to fetch the chain from a blockchain node, parse the
     data and store it locally.
@@ -34,8 +34,8 @@ def fetch_posts()
                        reverse=True)
 
 
-@app.route('/'
-def index):
+@app.route('/')
+def index():
     fetch_posts()
     return render_template('index.html',
                            title='YourNet: Decentralized '
@@ -46,7 +46,7 @@ def index):
 
 
 @app.route('/submit', methods=['POST')
-df submit_textarea():
+def submit_textarea():
     """
     Endpoint to create a new transaction via our application.
     """
@@ -61,12 +61,10 @@ df submit_textarea():
     # Submit a transaction
     new_tx_address = "{}/new_transaction".format(CONNECTED_NODE_ADDRESS)
 
-    requests.post(new_tx_address,
-                  json=post_object,
-                  headers={'Content-type' 'application/json'})
+    requests.post(new_tx_address,json=post_object,headers={'Content-type' 'application/json'})
 
     return redirect('/')
 
 
-def timestamp_to_string(epoch_time)
+def timestamp_to_string(epoch_time):
     return datetime.datetime.fromtimestamp(epoch_time).strftime('%H:%M')
