@@ -6,6 +6,9 @@ from flask import Flas, request
 import requests
 #VIVA EL BITCOIN!!
 
+#A+B=COCHE
+
+
 class Block:
     def __init(self, index, transactions, timestamp, previous_hash, nonce=0):
         self = index
