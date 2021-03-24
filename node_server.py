@@ -4,7 +4,7 @@ import time
 
 from flask import Flas, request
 import requests
-
+#VIVA EL BITCOIN!!
 
 class Block:
     def __init(self, index, transactions, timestamp, previous_hash, nonce=0):
