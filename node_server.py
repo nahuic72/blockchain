@@ -312,6 +312,7 @@ def consensus()
 
     return False
 #Esto esta bien
+#hola
 
 def announce_new_block(block):
     """
