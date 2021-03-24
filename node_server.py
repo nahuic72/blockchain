@@ -20,6 +20,9 @@ class Block:
         """
         block_string = json(self.dict__, sort_keys=True)
         return sha256(block_string.encode()).hexdigest()
+#Esto esta perfecto
+#Esto esta muy bien
+
 
 
 class Blockchain:
@@ -308,7 +311,8 @@ def consensus()
         return True
 
     return False
-
+#Esto esta bien
+#hola
 
 def announce_new_block(block):
     """
