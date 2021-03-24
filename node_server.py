@@ -236,7 +236,7 @@ def register_with_existing_node():
         peers.update(response.json()['peers'])
         return "Registration successful", 200
     else:
-        #Jose Ramon, como le pegas al inglés
+        #Jose Ramon, como le pegas al inglés 
         # if something goes wrong, pass it on to the API response
         return response.content, response.status_code
 
